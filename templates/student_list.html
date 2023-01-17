@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% extends 'base.html'%}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>front page</title>
+</head>
+
+<body>
+
+
+{% block baseblock %}
+
+<h1> Student List</h1>
+{% if lst %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">City</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+    {% for i in stud_list %}
+  <tbody>
+    <tr>
+      <th scope="row">{{i.id}}</th>
+      <td>{{i.name}}</td>
+      <td>{{i.age}}</td>
+      <td>{{i.city}}</td>
+      <td><a class="btn btn-primary" href="/updatelist/{{i.id}}" role="button">Update</a></td>
+      <td><a class="btn btn-primary" href="/delete/{{i.id}}" role="button">Delete</a></td>
+    </tr>
+  </tbody>
+    {% endfor %}
+</table>
+{% else %}
+<h1> NO RECORD FOUND </h1>
+{% endif %}
+
+{% endblock%}
+</body>
+</html>
